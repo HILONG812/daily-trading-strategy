@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-03-04T01:23:59.390622",
+  "type": "BUY",
+  "status": "EXECUTED",
+  "trades": [
+    {
+      "symbol": "ASML",
+      "name": "ASML Holding NV",
+      "action": "BUY",
+      "shares": 5,
+      "price": 950.0,
+      "total": 4750.0,
+      "allocation": "5%",
+      "reason": "EUV \u5149\u523b\u673a\u9f99\u5934\uff0c\u53f0\u79ef\u7535\u52a0\u8ba2"
+    },
+    {
+      "symbol": "SIL",
+      "name": "Global X Silver Miners ETF",
+      "action": "BUY",
+      "shares": 227,
+      "price": 22.0,
+      "total": 4994.0,
+      "allocation": "5%",
+      "reason": "\u767d\u94f6\u907f\u9669 + \u5de5\u4e1a\u9700\u6c42"
+    },
+    {
+      "timestamp": "2026-03-04T01:24:59.814296",
+      "symbol": "ASML",
+      "action": "BUY",
+      "shares": 5,
+      "price": 950
+    }
+  ],
+  "summary": {
+    "total_invested": 9744.0,
+    "cash_before": 11665.0,
+    "cash_after": 1921.0,
+    "position_change": "88% \u2192 97%"
+  }
+}
