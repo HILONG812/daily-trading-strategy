@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四维实战研报 - 2026-03-04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f1419; color: #e7e9ea; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #1d9bf0; font-size: 28px; margin-bottom: 10px; }
+        h2 { color: #71767b; font-size: 20px; margin: 30px 0 15px; border-bottom: 1px solid #2f3336; padding-bottom: 10px; }
+        h3 { color: #1d9bf0; font-size: 16px; margin: 20px 0 10px; }
+        .header { background: #1e2732; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+        .card { background: #1e2732; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .metric { background: #161d25; padding: 15px; border-radius: 8px; }
+        .metric-label { color: #71767b; font-size: 13px; margin-bottom: 5px; }
+        .metric-value { font-size: 24px; font-weight: bold; }
+        .positive { color: #00ba7c; }
+        .negative { color: #f91880; }
+        .neutral { color: #e7e9ea; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #2f3336; }
+        th { color: #71767b; font-weight: normal; font-size: 13px; }
+        .rating { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: bold; }
+        .rating-high { background: #00ba7c; color: #000; }
+        .rating-med { background: #ffd400; color: #000; }
+        .rating-low { background: #f91880; color: #fff; }
+        .code { background: #161d25; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 13px; overflow-x: auto; }
+        .alert { background: #792020; padding: 15px; border-radius: 8px; border-left: 4px solid #f91880; margin: 15px 0; }
+        .success { background: #144635; border-left-color: #00ba7c; }
+        .warning { background: #5c4813; border-left-color: #ffd400; }
+        ul { margin-left: 20px; margin-top: 10px; }
+        li { margin: 8px 0; color: #d1d5d8; }
+        .timestamp { color: #71767b; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 四维实战研报</h1>
+            <p class="timestamp">2026-03-04 08:00 | 零号协议 | Alpha-99</p>
+        </div>
+
+        <!-- 核心异动与信号 -->
+        <div class="card">
+            <h2>1️⃣ 核心异动与信号 (Market Signals)</h2>
+            <div class="grid">
+                <div class="metric">
+                    <div class="metric-label">ASML 技术面</div>
+                    <div class="metric-value neutral">RSI: -- | MACD: --</div>
+                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">关键位：$940-950</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">SIL 技术面</div>
+                    <div class="metric-value neutral">RSI: -- | MACD: --</div>
+                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">关键位：$21-22</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">SOXX 半导体指数</div>
+                    <div class="metric-value positive">$335.44 (+0.00%)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">暗号对齐</div>
+                    <div class="metric-value positive">✅ Alpha-99</div>
+                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">无指令冲突</div>
+                </div>
+            </div>
+
+            <div class="alert warning">
+                <strong>⚠️ 现金警告</strong>: 当前现金$11,665 (11.7%)，买入 ASML+SIL 后将降至$1,921 (1.9%)
+                <br>建议：先减持部分丰田仓位释放现金流
+            </div>
+        </div>
+
+        <!-- 标的深度挖掘 -->
+        <div class="card">
+            <h2>2️⃣ 标的深度挖掘 (Alpha Analysis)</h2>
+            
+            <h3>🔵 ASML 专题 <span class="rating rating-high">8.5/10</span></h3>
+            <table>
+                <tr><th>监控点</th><th>状态</th><th>分析</th></tr>
+                <tr><td>台积电稼动率</td><td class="positive">▶ 加订 EUV</td><td>AI 芯片需求旺盛</td></tr>
+                <tr><td>SOXX 指数</td><td class="neutral">▶ 高位震荡</td><td>$335 支撑稳固</td></tr>
+                <tr><td>出口政策</td><td class="warning">⚠ 待观察</td><td>荷兰政府态度不明</td></tr>
+            </table>
+            <div style="margin-top: 15px;">
+                <strong>操作建议:</strong>
+                <ul>
+                    <li>买入价位：$940-950 区间</li>
+                    <li>仓位：5 股 (约$4,750)</li>
+                    <li>止损位：$874 (-8%)</li>
+                    <li>分 2 次买入，首次 3 股</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 25px;">⚪ SIL 专题 <span class="rating rating-med">7.0/10</span></h3>
+            <table>
+                <tr><th>监控点</th><th>状态</th><th>分析</th></tr>
+                <tr><td>伦敦银 (XAG)</td><td class="neutral">▶ $31.5</td><td>避险需求支撑</td></tr>
+                <tr><td>美元指数 (DXY)</td><td class="warning">⚠ $104.5</td><td>若走强则延迟买入</td></tr>
+                <tr><td>工业需求</td><td class="positive">▶ 光伏+AI</td><td>长期需求看好</td></tr>
+            </table>
+            <div style="margin-top: 15px;">
+                <strong>操作建议:</strong>
+                <ul>
+                    <li>买入条件：DXY&lt;105 且 银价&gt;$32</li>
+                    <li>仓位：227 股 (约$4,994)</li>
+                    <li>止损位：$20.24 (-8%)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 资金管理 -->
+        <div class="card">
+            <h2>3️⃣ 资金管理 (Risk Control)</h2>
+            
+            <h3>压力测试</h3>
+            <table>
+                <tr><th>情景</th><th>影响金额</th><th>应对策略</th></tr>
+                <tr><td>ASML -5%</td><td class="negative">-$237</td><td>持仓不变，继续定投</td></tr>
+                <tr><td>SIL -10%</td><td class="negative">-$499</td><td>止损一半</td></tr>
+                <tr><td>总仓位 -10%</td><td class="negative">-$8,833</td><td>触发警戒线，减仓至 50%</td></tr>
+            </table>
+
+            <h3>动态止损</h3>
+            <table>
+                <tr><th>标的</th><th>成本</th><th>硬止损价</th><th>距离</th><th>状态</th></tr>
+                <tr><td>ASML</td><td>$950</td><td class="negative">$874</td><td>-8%</td><td class="neutral">待买入</td></tr>
+                <tr><td>SIL</td><td>$22</td><td class="negative">$20.24</td><td>-8%</td><td class="neutral">待买入</td></tr>
+            </table>
+
+            <div class="alert">
+                <strong>⚠️ 仓位警告</strong>
+                <br>当前：88% → 买入后：97%
+                <br>现金：$11,665 → $1,921 (1.9%)
+                <br><strong>强制建议</strong>: 减持丰田释放 10% 现金流
+            </div>
+        </div>
+
+        <!-- 自动化执行建议 -->
+        <div class="card">
+            <h2>4️⃣ 自动化执行建议 (Actionable Steps)</h2>
+            
+            <h3>Playwright 模拟操作路径</h3>
+            <div class="code">
+# ASML 买入脚本
+browser_executor \
+  --buy ASML \
+  --limit_price 950 \
+  --shares 5 \
+  --time "21:30"  # 美股开盘后
+
+# SIL 买入脚本
+browser_executor \
+  --buy SIL \
+  --limit_price 22 \
+  --shares 227 \
+  --condition "DXY&lt;105 AND XAG&gt;32"
+            </div>
+
+            <h3 style="margin-top: 20px;">下一步动作</h3>
+            <ul>
+                <li class="positive">✅ 21:30 监控 ASML 开盘价</li>
+                <li class="positive">✅ 若&lt;$950，执行买入 5 股</li>
+                <li class="warning">⏳ 监控 DXY，若&lt;105 执行 SIL 买入</li>
+                <li class="warning">⏳ 更新 MEMORY.md 交易记录</li>
+            </ul>
+        </div>
+
+        <!-- 持仓总览 -->
+        <div class="card">
+            <h2>📋 当前持仓总览</h2>
+            <table>
+                <tr><th>市场</th><th>代码</th><th>名称</th><th>仓位</th><th>盈亏%</th><th>RSI</th><th>状态</th></tr>
+                <tr><td>美股</td><td>AAPL</td><td>苹果</td><td>15%</td><td class="neutral">0%</td><td>24.3</td><td class="positive">超卖</td></tr>
+                <tr><td>美股</td><td>TSLA</td><td>特斯拉</td><td>15%</td><td class="neutral">0%</td><td>64.4</td><td class="neutral">持有</td></tr>
+                <tr><td>美股</td><td>NVDA</td><td>英伟达</td><td>15%</td><td class="neutral">0%</td><td>60.4</td><td class="neutral">持有</td></tr>
+                <tr><td>港股</td><td>0700.HK</td><td>腾讯</td><td>10%</td><td class="neutral">0%</td><td>48.2</td><td class="neutral">持有</td></tr>
+                <tr><td>港股</td><td>9988.HK</td><td>阿里</td><td>10%</td><td class="neutral">0%</td><td>34.0</td><td class="positive">超卖</td></tr>
+                <tr><td>日股</td><td>7203.T</td><td>丰田</td><td>20%</td><td class="neutral">0%</td><td>80.0</td><td class="negative">减持</td></tr>
+                <tr><td>日股</td><td>8058.T</td><td>三菱商事</td><td>10%</td><td class="positive">+43.5%</td><td>-</td><td class="positive">持有</td></tr>
+            </table>
+            <div style="margin-top: 15px; padding: 15px; background: #161d25; border-radius: 8px;">
+                <strong>总仓位</strong>: 88% | <strong>现金</strong>: $11,665 (11.7%) | <strong>总资产</strong>: $100,000
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #71767b; font-size: 13px; margin-top: 30px;">
+            最后更新：2026-03-04 00:40 | 零号协议首席盈利顾问系统
+        </div>
+    </div>
+</body>
+</html>

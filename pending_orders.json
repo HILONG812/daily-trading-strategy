@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-03-04T00:35:16.748631",
+  "cash_reserve_before": 11665,
+  "orders": [
+    {
+      "symbol": "ASML",
+      "name": "ASML Holding NV",
+      "shares": 5,
+      "price": 950.0,
+      "cost": 4750.0,
+      "target_allocation": "5%",
+      "status": "pending"
+    },
+    {
+      "symbol": "SIL",
+      "name": "Global X Silver Miners ETF",
+      "shares": 227,
+      "price": 22.0,
+      "cost": 4994.0,
+      "target_allocation": "5%",
+      "status": "pending"
+    }
+  ],
+  "cash_reserve_after": 1921.0,
+  "total_invested": 9744.0
+}

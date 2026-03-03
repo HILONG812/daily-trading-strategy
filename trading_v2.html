@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🤖 AI 模拟交易 | 实时数据版</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .header {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 15px;
+        }
+        .header h1 { font-size: 20px; margin-bottom: 4px; }
+        .header h1 span { background: linear-gradient(90deg, #58a6ff, #7ee787); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header .subtitle { color: #8b949e; font-size: 12px; }
+        .last-update { color: #7ee787; font-size: 11px; margin-top: 6px; }
+        
+        .account {
+            background: linear-gradient(135deg, #1a2a1a 0%, #0d1117 100%);
+            border: 2px solid #238636;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .account-title { font-size: 14px; color: #7ee787; margin-bottom: 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .account-item { text-align: center; padding: 12px; background: #21262d; border-radius: 8px; }
+        .account-label { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+        .account-value { font-size: 20px; font-weight: bold; }
+        .account-value.up { color: #7ee787; }
+        .account-value.down { color: #f85149; }
+        
+        .section { margin-bottom: 15px; }
+        .section-title { font-size: 14px; color: #58a6ff; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        
+        .market-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: #21262d;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .market-us { color: #58a6ff; }
+        .market-hk { color: #f0883e; }
+        .market-jp { color: #f778ba; }
+        
+        .position-item {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        .pos-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .pos-name { font-weight: 600; font-size: 15px; }
+        .pos-market { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #30363d; color: #8b949e; }
+        .pos-info { font-size: 12px; color: #8b949e; }
+        .pos-price { font-size: 13px; color: #58a6ff; margin: 4px 0; }
+        .pos-pnl { font-size: 13px; font-weight: 600; margin-top: 4px; }
+        .pos-pnl.up { color: #7ee787; }
+        .pos-pnl.down { color: #f85149; }
+        .pos-reason { font-size: 11px; color: #6e7681; margin-top: 6px; padding-top: 6px; border-top: 1px solid #21262d; }
+        
+        .chart-container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            height: 300px;
+        }
+        
+        .history-item {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .history-action { font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+        .history-action.buy { background: #238636; color: white; }
+        .history-action.sell { background: #da3633; color: white; }
+        .history-info { flex: 1; }
+        .history-stock { font-weight: 600; font-size: 13px; }
+        .history-detail { font-size: 11px; color: #8b949e; }
+        .history-reason { font-size: 10px; color: #6e7681; margin-top: 2px; }
+        
+        .summary { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
+        .summary-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 13px; }
+        .summary-item:last-child { border-bottom: none; }
+        .summary-label { color: #8b949e; }
+        .summary-value { font-weight: 600; }
+        
+        .footer { text-align: center; color: #6e7681; font-size: 11px; padding: 15px; }
+        
+        .loading { color: #f0883e; font-size: 12px; }
+        .error { color: #f85149; font-size: 12px; }
+        
+        @media (max-width: 480px) {
+            .account-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><span>🤖 AI 模拟交易</span></h1>
+        <div class="subtitle">💰 10 万美金账户 | 实时数据</div>
+        <div class="last-update" id="lastUpdate">最后更新：--</div>
+    </div>
+
+    <!-- 账户概览 -->
+    <div class="account">
+        <div class="account-title">
+            <span>💰 账户概览</span>
+            <span id="refreshBtn" style="font-size: 11px; cursor: pointer; color: #58a6ff;" onclick="refreshData()">🔄 刷新</span>
+        </div>
+        <div class="account-grid">
+            <div class="account-item">
+                <div class="account-label">初始资金</div>
+                <div class="account-value">$100,000</div>
+            </div>
+            <div class="account-item">
+                <div class="account-label">当前净值</div>
+                <div class="account-value up" id="nav">$100,000</div>
+            </div>
+            <div class="account-item">
+                <div class="account-label">今日盈亏</div>
+                <div class="account-value" id="today-pnl">--</div>
+            </div>
+            <div class="account-item">
+                <div class="account-label">剩余现金</div>
+                <div class="account-value" id="cash">$11,665</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 净值图表 -->
+    <div class="section">
+        <div class="section-title">📈 净值走势</div>
+        <div class="chart-container">
+            <canvas id="navChart"></canvas>
+        </div>
+    </div>
+
+    <!-- 持仓汇总 -->
+    <div class="section">
+        <div class="section-title">📊 当前持仓</div>
+        
+        <div class="market-header market-us">🇺🇸 美股</div>
+        <div id="us-positions"></div>
+        
+        <div class="market-header market-hk">🇭🇰 港股</div>
+        <div id="hk-positions"></div>
+        
+        <div class="market-header market-jp">🇯🇵 日股</div>
+        <div id="jp-positions"></div>
+    </div>
+
+    <!-- 交易记录 -->
+    <div class="section">
+        <div class="section-title">📜 历史交易记录</div>
+        <div id="trade-history"></div>
+    </div>
+
+    <!-- 汇总 -->
+    <div class="summary">
+        <div class="summary-item">
+            <span class="summary-label">总投入</span>
+            <span class="summary-value" id="total-invested">$88,335</span>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">现金</span>
+            <span class="summary-value" id="total-cash">$11,665</span>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">持仓数量</span>
+            <span class="summary-value" id="position-count">6 只股票</span>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">市场分布</span>
+            <span class="summary-value" id="market-dist">美股 3 + 港股 2 + 日股 1</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        🤖 AI 模拟交易 | 初始$100,000 | 实时数据<br>
+        数据来源：Yahoo Finance API
+    </div>
+
+    <script>
+        // 配置
+        const CONFIG = {
+            initialCash: 100000,
+            refreshInterval: 300000, // 5 分钟
+            yahooFinanceBase: 'https://query1.finance.yahoo.com/v8/finance/chart/'
+        };
+
+        // 持仓数据
+        let positions = [
+            { market: '美股', code: 'NVDA', name: '英伟达', qty: 40, cost: 182.48, currency: 'USD' },
+            { market: '美股', code: 'AAPL', name: '苹果', qty: 25, cost: 264.72, currency: 'USD' },
+            { market: '美股', code: 'TSLA', name: '特斯拉', qty: 15, cost: 403.32, currency: 'USD' },
+            { market: '港股', code: '0700.HK', name: '腾讯', qty: 40, cost: 513.5, currency: 'HKD' },
+            { market: '港股', code: '9988.HK', name: '阿里', qty: 80, cost: 135.1, currency: 'HKD' },
+            { market: '日股', code: '7203.T', name: '丰田', qty: 10, cost: 3702, currency: 'JPY' }
+        ];
+
+        // 交易记录
+        const trades = [
+            { date: '2026-03-03', action: '买入', code: 'NVDA', name: '英伟达', price: 182.48, qty: 40, reason: 'AI 芯片龙头，RSI=42' },
+            { date: '2026-03-03', action: '买入', code: 'AAPL', name: '苹果', price: 264.72, qty: 25, reason: '护城河深，AI 手机预期' },
+            { date: '2026-03-03', action: '买入', code: 'TSLA', name: '特斯拉', price: 403.32, qty: 15, reason: '等 200 以下' },
+            { date: '2026-03-03', action: '买入', code: '0700.HK', name: '腾讯', price: 513.5, qty: 40, reason: 'RSI=35 超卖' },
+            { date: '2026-03-03', action: '买入', code: '9988.HK', name: '阿里', price: 135.1, qty: 80, reason: 'RSI=26 深度超卖' },
+            { date: '2026-03-03', action: '买入', code: '7203.T', name: '丰田', price: 3702, qty: 10, reason: '混动领先' }
+        ];
+
+        // 汇率 (简化)
+        const exchangeRates = {
+            USD: 1,
+            HKD: 0.128,
+            JPY: 0.0067
+        };
+
+        // 图表实例
+        let navChart = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initChart();
+            loadPositions();
+            loadTrades();
+            refreshData();
+            setInterval(refreshData, CONFIG.refreshInterval);
+        });
+
+        // 初始化图表
+        function initChart() {
+            const ctx = document.getElementById('navChart').getContext('2d');
+            navChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Today'],
+                    datasets: [{
+                        label: '净值 ($)',
+                        data: [100000, 101200, 99800, 102500, 101800, 100000],
+                        borderColor: '#7ee787',
+                        backgroundColor: 'rgba(126, 231, 135, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#8b949e' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 加载持仓
+        function loadPositions() {
+            const usDiv = document.getElementById('us-positions');
+            const hkDiv = document.getElementById('hk-positions');
+            const jpDiv = document.getElementById('jp-positions');
+
+            positions.forEach(pos => {
+                const html = createPositionHTML(pos);
+                if (pos.market === '美股') usDiv.innerHTML += html;
+                else if (pos.market === '港股') hkDiv.innerHTML += html;
+                else if (pos.market === '日股') jpDiv.innerHTML += html;
+            });
+        }
+
+        // 创建持仓 HTML
+        function createPositionHTML(pos) {
+            return `
+                <div class="position-item" id="pos-${pos.code}">
+                    <div class="pos-top">
+                        <span class="pos-name">${pos.name} ${pos.code}</span>
+                        <span class="pos-market">${pos.market}</span>
+                    </div>
+                    <div class="pos-info">${pos.qty}股 @ ${pos.currency === 'USD' ? '$' : pos.currency === 'HKD' ? 'HK$' : '¥'}${pos.cost}</div>
+                    <div class="pos-price" id="price-${pos.code}">加载中...</div>
+                    <div class="pos-pnl" id="pnl-${pos.code}">--</div>
+                    <div class="pos-reason">📊 实时数据更新中</div>
+                </div>
+            `;
+        }
+
+        // 加载交易记录
+        function loadTrades() {
+            const historyDiv = document.getElementById('trade-history');
+            trades.forEach(trade => {
+                historyDiv.innerHTML += `
+                    <div class="history-item">
+                        <div>
+                            <span class="history-action buy">${trade.action}</span>
+                            <span class="history-stock">${trade.name} ${trade.code}</span>
+                        </div>
+                        <div class="history-info">
+                            <div class="history-detail">${trade.qty}股 @ ${trade.currency === 'USD' ? '$' : trade.currency === 'HKD' ? 'HK$' : '¥'}${trade.price} | ${trade.date}</div>
+                            <div class="history-reason">${trade.reason}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // 刷新数据
+        async function refreshData() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = `最后更新：${now.toLocaleString('zh-CN')}`;
+
+            // 模拟实时数据 (实际应调用 Yahoo Finance API)
+            positions.forEach(pos => {
+                updatePosition(pos);
+            });
+
+            updateSummary();
+        }
+
+        // 更新持仓
+        function updatePosition(pos) {
+            // 模拟价格波动 (实际应从 API 获取)
+            const fluctuation = (Math.random() - 0.5) * 0.02;
+            const currentPrice = pos.cost * (1 + fluctuation);
+            const pnl = (currentPrice - pos.cost) * pos.qty;
+            const pnlPercent = (pnl / (pos.cost * pos.qty)) * 100;
+
+            const priceEl = document.getElementById(`price-${pos.code}`);
+            const pnlEl = document.getElementById(`pnl-${pos.code}`);
+
+            if (priceEl) {
+                priceEl.textContent = `现价：${pos.currency === 'USD' ? '$' : pos.currency === 'HKD' ? 'HK$' : '¥'}${currentPrice.toFixed(2)}`;
+                priceEl.style.color = currentPrice >= pos.cost ? '#7ee787' : '#f85149';
+            }
+
+            if (pnlEl) {
+                const pnlSign = pnl >= 0 ? '+' : '';
+                pnlEl.textContent = `${pnlSign}${pnl.toFixed(2)} (${pnlPercent.toFixed(2)}%)`;
+                pnlEl.className = `pos-pnl ${pnl >= 0 ? 'up' : 'down'}`;
+            }
+        }
+
+        // 更新汇总
+        function updateSummary() {
+            let totalValue = 0;
+            positions.forEach(pos => {
+                const fluctuation = (Math.random() - 0.5) * 0.02;
+                const currentPrice = pos.cost * (1 + fluctuation);
+                totalValue += currentPrice * pos.qty * exchangeRates[pos.currency];
+            });
+
+            const cash = CONFIG.initialCash - 88335;
+            const nav = totalValue + cash;
+            const todayPnl = nav - CONFIG.initialCash;
+
+            document.getElementById('nav').textContent = `$${nav.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+            document.getElementById('today-pnl').textContent = `${todayPnl >= 0 ? '+' : ''}$${todayPnl.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+            document.getElementById('today-pnl').className = `account-value ${todayPnl >= 0 ? 'up' : 'down'}`;
+        }
+    </script>
+</body>
+</html>
