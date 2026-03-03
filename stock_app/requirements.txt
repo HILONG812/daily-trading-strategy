@@ -1,9 +1,0 @@
-# Stock Analyzer Dependencies
-# 技术栈: yfinance + AkShare + Streamlit + Plotly
-
-yfinance>=0.2.0
-akshare>=1.18.0
-streamlit>=1.30.0
-plotly>=6.0.0
-pandas>=2.0.0
-numpy>=1.24.0

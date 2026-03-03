@@ -3,193 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>四维实战研报 - 2026-03-04</title>
+    <title>市场策略师 - 早盘简报</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f1419; color: #e7e9ea; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { color: #1d9bf0; font-size: 28px; margin-bottom: 10px; }
-        h2 { color: #71767b; font-size: 20px; margin: 30px 0 15px; border-bottom: 1px solid #2f3336; padding-bottom: 10px; }
-        h3 { color: #1d9bf0; font-size: 16px; margin: 20px 0 10px; }
-        .header { background: #1e2732; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-        .card { background: #1e2732; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .metric { background: #161d25; padding: 15px; border-radius: 8px; }
-        .metric-label { color: #71767b; font-size: 13px; margin-bottom: 5px; }
-        .metric-value { font-size: 24px; font-weight: bold; }
-        .positive { color: #00ba7c; }
-        .negative { color: #f91880; }
-        .neutral { color: #e7e9ea; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #2f3336; }
-        th { color: #71767b; font-weight: normal; font-size: 13px; }
-        .rating { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: bold; }
-        .rating-high { background: #00ba7c; color: #000; }
-        .rating-med { background: #ffd400; color: #000; }
-        .rating-low { background: #f91880; color: #fff; }
-        .code { background: #161d25; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 13px; overflow-x: auto; }
-        .alert { background: #792020; padding: 15px; border-radius: 8px; border-left: 4px solid #f91880; margin: 15px 0; }
-        .success { background: #144635; border-left-color: #00ba7c; }
-        .warning { background: #5c4813; border-left-color: #ffd400; }
-        ul { margin-left: 20px; margin-top: 10px; }
-        li { margin: 8px 0; color: #d1d5d8; }
-        .timestamp { color: #71767b; font-size: 13px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 20px; }
+        .date { font-size: 14px; opacity: 0.9; }
+        .title { font-size: 28px; font-weight: bold; margin: 10px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .card h3 { margin: 0 0 15px 0; color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .stock { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .stock:last-child { border-bottom: none; }
+        .stock-name { font-weight: 600; }
+        .stock-code { color: #666; font-size: 12px; }
+        .stock-price { font-weight: bold; }
+        .stock-change { padding: 4px 8px; border-radius: 4px; font-size: 13px; font-weight: 600; }
+        .up { background: #d4edda; color: #155724; }
+        .down { background: #f8d7da; color: #721c24; }
+        .alert { padding: 15px; border-radius: 5px; margin: 10px 0; font-size: 14px; }
+        .alert-warning { background: #fff3cd; color: #856404; border-left: 4px solid #ffc107; }
+        .alert-danger { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
+        .alert-info { background: #d1ecf1; color: #0c5460; border-left: 4px solid #17a2b8; }
+        .section { margin: 20px 0; }
+        .section h4 { color: #555; margin-bottom: 10px; }
+        ul { padding-left: 20px; }
+        li { margin: 8px 0; color: #444; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 12px; }
+        .plan { background: #e7f3ff; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .plan-title { font-weight: bold; color: #0066cc; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📊 四维实战研报</h1>
-            <p class="timestamp">2026-03-04 08:00 | 零号协议 | Alpha-99</p>
-        </div>
+    <div class="header">
+        <div class="date">🌅 2026 年 3 月 4 日 | 早盘作战简报 (08:00 北京时间)</div>
+        <div class="title">📊 全球市场开盘前哨站</div>
+        <div>市场策略师自动更新 | 达利奥系统逻辑 + 芒格多元思维 + K 线技术分析</div>
+    </div>
 
-        <!-- 核心异动与信号 -->
+    <!-- 隔夜美股 -->
+    <div class="section">
         <div class="card">
-            <h2>1️⃣ 核心异动与信号 (Market Signals)</h2>
-            <div class="grid">
-                <div class="metric">
-                    <div class="metric-label">ASML 技术面</div>
-                    <div class="metric-value neutral">RSI: -- | MACD: --</div>
-                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">关键位：$940-950</div>
+            <h3>🌙 隔夜美股收盘</h3>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">英伟达</div>
+                    <div class="stock-code">NVDA</div>
                 </div>
-                <div class="metric">
-                    <div class="metric-label">SIL 技术面</div>
-                    <div class="metric-value neutral">RSI: -- | MACD: --</div>
-                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">关键位：$21-22</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-label">SOXX 半导体指数</div>
-                    <div class="metric-value positive">$335.44 (+0.00%)</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-label">暗号对齐</div>
-                    <div class="metric-value positive">✅ Alpha-99</div>
-                    <div style="color: #71767b; font-size: 13px; margin-top: 5px;">无指令冲突</div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$180.07</div>
+                    <span class="stock-change down">-1.32%</span>
                 </div>
             </div>
-
-            <div class="alert warning">
-                <strong>⚠️ 现金警告</strong>: 当前现金$11,665 (11.7%)，买入 ASML+SIL 后将降至$1,921 (1.9%)
-                <br>建议：先减持部分丰田仓位释放现金流
+            <div class="stock">
+                <div>
+                    <div class="stock-name">特斯拉</div>
+                    <div class="stock-code">TSLA</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$392.35</div>
+                    <span class="stock-change down">-2.72%</span>
+                </div>
+            </div>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">苹果</div>
+                    <div class="stock-code">AAPL</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$261.88</div>
+                    <span class="stock-change down">-1.07%</span>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <strong>美股整体回调：</strong>科技股普遍下跌，NVDA 昨日强势后今日获利回吐。
             </div>
         </div>
+    </div>
 
-        <!-- 标的深度挖掘 -->
+    <!-- 港股/日股 -->
+    <div class="section">
         <div class="card">
-            <h2>2️⃣ 标的深度挖掘 (Alpha Analysis)</h2>
+            <h3>🇭🇰🇯🇵 港股/日股 (昨日收盘)</h3>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">腾讯</div>
+                    <div class="stock-code">0700.HK</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$510.50</div>
+                    <span class="stock-change down">-0.68%</span>
+                </div>
+            </div>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">阿里巴巴</div>
+                    <div class="stock-code">9988.HK</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$134.80</div>
+                    <span class="stock-change down">-1.17%</span>
+                </div>
+            </div>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">零跑汽车</div>
+                    <div class="stock-code">9863.HK</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">$38.26</div>
+                    <span class="stock-change down">-7.00%</span>
+                </div>
+            </div>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">丰田</div>
+                    <div class="stock-code">7203.T</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">¥3702</div>
+                    <span class="stock-change down">-6.14%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重点关注 -->
+    <div class="section">
+        <div class="card">
+            <h3>⚠️ 今日重点关注</h3>
+            <div class="alert alert-danger">
+                <strong>🔴 零跑汽车 (9863.HK) - 高危预警</strong><br>
+                昨日下跌 7%，距离 -8% 止损线仅差 1%。<br>
+                <strong>今日策略：</strong>开盘若继续下跌，触及 -8% 立即止损，不要犹豫。
+            </div>
+            <div class="alert alert-warning">
+                <strong>🟡 丰田 (7203.T) - 观察反弹</strong><br>
+                昨日大跌 6.14%，今日关注是否技术性反弹。<br>
+                <strong>今日策略：</strong>若开盘弱势继续，考虑减仓；若反弹至 -3% 以内，可暂时持有。
+            </div>
+            <div class="alert alert-info">
+                <strong>🔵 英伟达 (NVDA) - 回调买入机会？</strong><br>
+                隔夜回调 -1.32%，但整体趋势仍向上。<br>
+                <strong>今日策略：</strong>若港股/美股继续回调，可考虑逢低加仓。
+            </div>
+        </div>
+    </div>
+
+    <!-- 今日作战计划 -->
+    <div class="section">
+        <div class="card">
+            <h3>📋 今日作战计划</h3>
             
-            <h3>🔵 ASML 专题 <span class="rating rating-high">8.5/10</span></h3>
-            <table>
-                <tr><th>监控点</th><th>状态</th><th>分析</th></tr>
-                <tr><td>台积电稼动率</td><td class="positive">▶ 加订 EUV</td><td>AI 芯片需求旺盛</td></tr>
-                <tr><td>SOXX 指数</td><td class="neutral">▶ 高位震荡</td><td>$335 支撑稳固</td></tr>
-                <tr><td>出口政策</td><td class="warning">⚠ 待观察</td><td>荷兰政府态度不明</td></tr>
-            </table>
-            <div style="margin-top: 15px;">
-                <strong>操作建议:</strong>
-                <ul>
-                    <li>买入价位：$940-950 区间</li>
-                    <li>仓位：5 股 (约$4,750)</li>
-                    <li>止损位：$874 (-8%)</li>
-                    <li>分 2 次买入，首次 3 股</li>
-                </ul>
+            <div class="plan">
+                <div class="plan-title">计划 A：零跑汽车触及止损</div>
+                <p>若开盘价 ≤ $37.50 (约 -8%)，立即执行止损卖出。纪律第一，不要抱有幻想。</p>
             </div>
-
-            <h3 style="margin-top: 25px;">⚪ SIL 专题 <span class="rating rating-med">7.0/10</span></h3>
-            <table>
-                <tr><th>监控点</th><th>状态</th><th>分析</th></tr>
-                <tr><td>伦敦银 (XAG)</td><td class="neutral">▶ $31.5</td><td>避险需求支撑</td></tr>
-                <tr><td>美元指数 (DXY)</td><td class="warning">⚠ $104.5</td><td>若走强则延迟买入</td></tr>
-                <tr><td>工业需求</td><td class="positive">▶ 光伏+AI</td><td>长期需求看好</td></tr>
-            </table>
-            <div style="margin-top: 15px;">
-                <strong>操作建议:</strong>
-                <ul>
-                    <li>买入条件：DXY&lt;105 且 银价&gt;$32</li>
-                    <li>仓位：227 股 (约$4,994)</li>
-                    <li>止损位：$20.24 (-8%)</li>
-                </ul>
+            
+            <div class="plan">
+                <div class="plan-title">计划 B：丰田弱势继续</div>
+                <p>若开盘下跌超过 -3%，考虑减仓 50%；若反弹，持有观望。</p>
+            </div>
+            
+            <div class="plan">
+                <div class="plan-title">计划 C：英伟达回调加仓</div>
+                <p>若 NVDA 继续回调至 $175 以下，可考虑加仓 5-10% 仓位。</p>
+            </div>
+            
+            <div class="plan">
+                <div class="plan-title">计划 D：腾讯/阿里企稳</div>
+                <p>若港股科技股企稳反弹，可持有观望，暂不加仓。</p>
             </div>
         </div>
+    </div>
 
-        <!-- 资金管理 -->
+    <!-- 仓位管理 -->
+    <div class="section">
         <div class="card">
-            <h2>3️⃣ 资金管理 (Risk Control)</h2>
-            
-            <h3>压力测试</h3>
-            <table>
-                <tr><th>情景</th><th>影响金额</th><th>应对策略</th></tr>
-                <tr><td>ASML -5%</td><td class="negative">-$237</td><td>持仓不变，继续定投</td></tr>
-                <tr><td>SIL -10%</td><td class="negative">-$499</td><td>止损一半</td></tr>
-                <tr><td>总仓位 -10%</td><td class="negative">-$8,833</td><td>触发警戒线，减仓至 50%</td></tr>
-            </table>
-
-            <h3>动态止损</h3>
-            <table>
-                <tr><th>标的</th><th>成本</th><th>硬止损价</th><th>距离</th><th>状态</th></tr>
-                <tr><td>ASML</td><td>$950</td><td class="negative">$874</td><td>-8%</td><td class="neutral">待买入</td></tr>
-                <tr><td>SIL</td><td>$22</td><td class="negative">$20.24</td><td>-8%</td><td class="neutral">待买入</td></tr>
-            </table>
-
-            <div class="alert">
-                <strong>⚠️ 仓位警告</strong>
-                <br>当前：88% → 买入后：97%
-                <br>现金：$11,665 → $1,921 (1.9%)
-                <br><strong>强制建议</strong>: 减持丰田释放 10% 现金流
+            <h3>💰 仓位建议</h3>
+            <div class="alert alert-warning">
+                <strong>当前建议：</strong>6 成仓位，40% 现金<br>
+                若零跑止损执行，仓位将降至约 5.5 成，现金比例提升。
             </div>
-        </div>
-
-        <!-- 自动化执行建议 -->
-        <div class="card">
-            <h2>4️⃣ 自动化执行建议 (Actionable Steps)</h2>
-            
-            <h3>Playwright 模拟操作路径</h3>
-            <div class="code">
-# ASML 买入脚本
-browser_executor \
-  --buy ASML \
-  --limit_price 950 \
-  --shares 5 \
-  --time "21:30"  # 美股开盘后
-
-# SIL 买入脚本
-browser_executor \
-  --buy SIL \
-  --limit_price 22 \
-  --shares 227 \
-  --condition "DXY&lt;105 AND XAG&gt;32"
-            </div>
-
-            <h3 style="margin-top: 20px;">下一步动作</h3>
+            <p><strong>交易纪律：</strong></p>
             <ul>
-                <li class="positive">✅ 21:30 监控 ASML 开盘价</li>
-                <li class="positive">✅ 若&lt;$950，执行买入 5 股</li>
-                <li class="warning">⏳ 监控 DXY，若&lt;105 执行 SIL 买入</li>
-                <li class="warning">⏳ 更新 MEMORY.md 交易记录</li>
+                <li>单只股票不超过 20% 仓位 ✅</li>
+                <li>止损：-8% 必须止损 ⚠️ 零跑即将触及</li>
+                <li>止盈：+20% 减半仓</li>
+                <li>永远保留 30% 现金 ✅</li>
             </ul>
         </div>
+    </div>
 
-        <!-- 持仓总览 -->
+    <!-- 宏观监测 -->
+    <div class="section">
         <div class="card">
-            <h2>📋 当前持仓总览</h2>
-            <table>
-                <tr><th>市场</th><th>代码</th><th>名称</th><th>仓位</th><th>盈亏%</th><th>RSI</th><th>状态</th></tr>
-                <tr><td>美股</td><td>AAPL</td><td>苹果</td><td>15%</td><td class="neutral">0%</td><td>24.3</td><td class="positive">超卖</td></tr>
-                <tr><td>美股</td><td>TSLA</td><td>特斯拉</td><td>15%</td><td class="neutral">0%</td><td>64.4</td><td class="neutral">持有</td></tr>
-                <tr><td>美股</td><td>NVDA</td><td>英伟达</td><td>15%</td><td class="neutral">0%</td><td>60.4</td><td class="neutral">持有</td></tr>
-                <tr><td>港股</td><td>0700.HK</td><td>腾讯</td><td>10%</td><td class="neutral">0%</td><td>48.2</td><td class="neutral">持有</td></tr>
-                <tr><td>港股</td><td>9988.HK</td><td>阿里</td><td>10%</td><td class="neutral">0%</td><td>34.0</td><td class="positive">超卖</td></tr>
-                <tr><td>日股</td><td>7203.T</td><td>丰田</td><td>20%</td><td class="neutral">0%</td><td>80.0</td><td class="negative">减持</td></tr>
-                <tr><td>日股</td><td>8058.T</td><td>三菱商事</td><td>10%</td><td class="positive">+43.5%</td><td>-</td><td class="positive">持有</td></tr>
-            </table>
-            <div style="margin-top: 15px; padding: 15px; background: #161d25; border-radius: 8px;">
-                <strong>总仓位</strong>: 88% | <strong>现金</strong>: $11,665 (11.7%) | <strong>总资产</strong>: $100,000
-            </div>
+            <h3>🌍 宏观"机器"监测 (Dalio Style)</h3>
+            <ul>
+                <li><strong>流动性：</strong>美股科技股回调，资金可能轮动至价值股</li>
+                <li><strong>风险情绪：</strong>昨日多股大跌，市场风险偏好下降</li>
+                <li><strong>系统性风险：</strong>无明显宏观风险事件，个股基本面为主</li>
+            </ul>
         </div>
+    </div>
 
-        <div style="text-align: center; color: #71767b; font-size: 13px; margin-top: 30px;">
-            最后更新：2026-03-04 00:40 | 零号协议首席盈利顾问系统
-        </div>
+    <div class="footer">
+        <p>最后更新：2026-03-04 01:26 UTC (09:26 北京时间)</p>
+        <p>市场策略师自动更新系统 | 下次更新：2026-03-04 20:00 盘后</p>
+        <p><em>"众人的地方不一定有金子，但一定有践踏" —— 芒格</em></p>
     </div>
 </body>
 </html>
