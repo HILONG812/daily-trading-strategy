@@ -1,11 +1,21 @@
 {
-  "update_time": "2026-03-04 09:30:00",
+  "update_time": "2026-03-04 12:40:34",
   "initial": 100000,
-  "cash": 1921,
-  "total_invested": 98079,
-  "total_value": 97800,
-  "total_pnl": -279,
-  "total_pnl_pct": -0.28,
+  "cash": 5671,
+  "total_invested": 94329,
+  "total_value": 93100,
+  "total_pnl": -1229,
+  "total_pnl_pct": -1.25,
+  "last_trade": {
+    "time": "12:40",
+    "action": "SELL",
+    "symbol": "9863.HK",
+    "name": "零跑汽车",
+    "qty": 100,
+    "price": 37.5,
+    "total": 3750,
+    "reason": "触及 -8% 止损线，纪律执行"
+  },
   "positions": [
     {
       "code": "NVDA",
@@ -13,11 +23,11 @@
       "market": "美股",
       "qty": 40,
       "cost": 182.48,
-      "price": 180.07,
-      "value": 7202.8,
+      "price": 180.05,
+      "value": 7202,
       "cost_total": 7299.2,
-      "pnl": -96.4,
-      "pnl_pct": -1.32
+      "pnl": -97.2,
+      "pnl_pct": -1.33
     },
     {
       "code": "AAPL",
@@ -25,11 +35,11 @@
       "market": "美股",
       "qty": 25,
       "cost": 264.72,
-      "price": 261.88,
-      "value": 6547,
+      "price": 263.75,
+      "value": 6593.75,
       "cost_total": 6618,
-      "pnl": -71,
-      "pnl_pct": -1.07
+      "pnl": -24.25,
+      "pnl_pct": -0.37
     },
     {
       "code": "TSLA",
@@ -37,11 +47,11 @@
       "market": "美股",
       "qty": 15,
       "cost": 403.32,
-      "price": 392.35,
-      "value": 5885.25,
+      "price": 392.43,
+      "value": 5886.45,
       "cost_total": 6049.8,
-      "pnl": -164.55,
-      "pnl_pct": -2.72
+      "pnl": -163.35,
+      "pnl_pct": -2.70
     },
     {
       "code": "ASML",
@@ -49,11 +59,11 @@
       "market": "美股",
       "qty": 5,
       "cost": 950.0,
-      "price": 945.0,
-      "value": 4725,
+      "price": 940.0,
+      "value": 4700,
       "cost_total": 4750,
-      "pnl": -25,
-      "pnl_pct": -0.53
+      "pnl": -50,
+      "pnl_pct": -1.05
     },
     {
       "code": "SIL",
@@ -61,11 +71,11 @@
       "market": "美股",
       "qty": 227,
       "cost": 22.0,
-      "price": 22.5,
-      "value": 5107.5,
+      "price": 22.8,
+      "value": 5175.6,
       "cost_total": 4994,
-      "pnl": 113.5,
-      "pnl_pct": 2.27
+      "pnl": 181.6,
+      "pnl_pct": 3.64
     },
     {
       "code": "0700.HK",
@@ -73,11 +83,11 @@
       "market": "港股",
       "qty": 40,
       "cost": 513.5,
-      "price": 508.0,
-      "value": 20320,
+      "price": 502.5,
+      "value": 20100,
       "cost_total": 20540,
-      "pnl": -220,
-      "pnl_pct": -1.07
+      "pnl": -440,
+      "pnl_pct": -2.14
     },
     {
       "code": "9988.HK",
@@ -85,11 +95,11 @@
       "market": "港股",
       "qty": 80,
       "cost": 135.1,
-      "price": 133.5,
-      "value": 10680,
+      "price": 129.1,
+      "value": 10328,
       "cost_total": 10808,
-      "pnl": -128,
-      "pnl_pct": -1.18
+      "pnl": -480,
+      "pnl_pct": -4.44
     },
     {
       "code": "9863.HK",
@@ -97,11 +107,11 @@
       "market": "港股",
       "qty": 100,
       "cost": 41.0,
-      "price": 38.26,
-      "value": 3826,
+      "price": 37.5,
+      "value": 3750,
       "cost_total": 4100,
-      "pnl": -274,
-      "pnl_pct": -6.68
+      "pnl": -350,
+      "pnl_pct": -8.54
     },
     {
       "code": "7203.T",
@@ -109,11 +119,11 @@
       "market": "日股",
       "qty": 10,
       "cost": 3702,
-      "price": 3650,
-      "value": 36500,
+      "price": 3507,
+      "value": 35070,
       "cost_total": 37020,
-      "pnl": -520,
-      "pnl_pct": -1.40
+      "pnl": -1950,
+      "pnl_pct": -5.27
     },
     {
       "code": "8058.T",
@@ -121,11 +131,11 @@
       "market": "日股",
       "qty": 20,
       "cost": 5320,
-      "price": 5300,
-      "value": 106000,
+      "price": 5280,
+      "value": 105600,
       "cost_total": 106400,
-      "pnl": -400,
-      "pnl_pct": -0.38
+      "pnl": -800,
+      "pnl_pct": -0.75
     }
   ]
 }

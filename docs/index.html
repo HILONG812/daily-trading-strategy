@@ -35,14 +35,17 @@
         .alert-danger { background: rgba(244, 33, 46, 0.15); border-left: 4px solid #f4212e; }
         .alert-warning { background: rgba(255, 193, 7, 0.15); border-left: 4px solid #ffc107; }
         .alert-info { background: rgba(29, 155, 240, 0.15); border-left: 4px solid #1d9bf0; }
+        .alert-success { background: rgba(0, 186, 124, 0.15); border-left: 4px solid #00ba7c; }
         .footer { text-align: center; color: #8b98a5; font-size: 12px; margin-top: 30px; }
+        .stop-loss { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>📊 市场策略师 - 实时持仓看板</h1>
-            <p>2026 年 3 月 4 日 09:30 更新 | 达利奥系统逻辑 + 芒格多元思维 + K 线技术分析</p>
+            <p>2026 年 3 月 4 日 12:40 更新 | 达利奥系统逻辑 + 芒格多元思维 + K 线技术分析</p>
         </div>
 
         <div class="summary">
@@ -52,7 +55,7 @@
             </div>
             <div class="summary-card">
                 <div class="label">当前持仓</div>
-                <div class="value">$97,800</div>
+                <div class="value">$96,850</div>
             </div>
             <div class="summary-card">
                 <div class="label">现金储备</div>
@@ -60,24 +63,28 @@
             </div>
             <div class="summary-card">
                 <div class="label">总盈亏</div>
-                <div class="value negative">-$279 (-0.28%)</div>
+                <div class="value negative">-$1,229 (-1.25%)</div>
             </div>
         </div>
 
         <div class="section">
             <h2>⚠️ 紧急预警</h2>
-            <div class="alert alert-danger">
-                <strong>🔴 零跑汽车 (9863.HK) - 止损预警</strong><br>
-                当前 -$274 (-6.68%)，距离 -8% 止损线仅差 1.32%。<br>
-                <strong>操作:</strong> 若继续下跌触及 -8%，立即执行止损。
+            <div class="alert alert-danger stop-loss">
+                <strong>🔴 零跑汽车 (9863.HK) - 已触及止损线！</strong><br>
+                当前 -$350 (-8.54%)，已跌破 -8% 止损线。<br>
+                <strong>操作:</strong> ✅ 已记录止损卖出，执行纪律！
             </div>
             <div class="alert alert-warning">
                 <strong>🟡 丰田 (7203.T) - 持续走弱</strong><br>
-                当前 -1.40%，昨日已大跌 -6.14%。今日继续下跌，需关注是否企稳。
+                当前 -5.27%，连续两日下跌。需关注是否企稳。
+            </div>
+            <div class="alert alert-success">
+                <strong>🔵 SIL 白银 ETF - 表现强势</strong><br>
+                当前 +3.64% (+$181.6)，避险属性显著，继续持有。
             </div>
             <div class="alert alert-info">
-                <strong>🔵 SIL 白银 ETF - 唯一盈利</strong><br>
-                当前 +2.27% (+$113.5)，避险属性显现。
+                <strong>🟠 阿里 (9988.HK) - RSI 超卖</strong><br>
+                当前 -4.44%，RSI=17.86 进入超卖区域，关注反弹机会。
             </div>
         </div>
 
@@ -101,90 +108,90 @@
                         <td><div class="stock-name">英伟达</div><div class="stock-code">NVDA</div></td>
                         <td>40</td>
                         <td>$182.48</td>
-                        <td>$180.07</td>
-                        <td class="pnl-negative">-$96.40</td>
-                        <td class="pnl-negative">-1.32%</td>
+                        <td>$180.05</td>
+                        <td class="pnl-negative">-$97.20</td>
+                        <td class="pnl-negative">-1.33%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-us">美股</span></td>
                         <td><div class="stock-name">苹果</div><div class="stock-code">AAPL</div></td>
                         <td>25</td>
                         <td>$264.72</td>
-                        <td>$261.88</td>
-                        <td class="pnl-negative">-$71.00</td>
-                        <td class="pnl-negative">-1.07%</td>
+                        <td>$263.75</td>
+                        <td class="pnl-negative">-$24.25</td>
+                        <td class="pnl-negative">-0.37%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-us">美股</span></td>
                         <td><div class="stock-name">特斯拉</div><div class="stock-code">TSLA</div></td>
                         <td>15</td>
                         <td>$403.32</td>
-                        <td>$392.35</td>
-                        <td class="pnl-negative">-$164.55</td>
-                        <td class="pnl-negative">-2.72%</td>
+                        <td>$392.43</td>
+                        <td class="pnl-negative">-$163.35</td>
+                        <td class="pnl-negative">-2.70%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-us">美股</span></td>
                         <td><div class="stock-name">ASML</div><div class="stock-code">ASML</div></td>
                         <td>5</td>
                         <td>$950.00</td>
-                        <td>$945.00</td>
-                        <td class="pnl-negative">-$25.00</td>
-                        <td class="pnl-negative">-0.53%</td>
+                        <td>$940.00</td>
+                        <td class="pnl-negative">-$50.00</td>
+                        <td class="pnl-negative">-1.05%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-us">美股</span></td>
                         <td><div class="stock-name">白银 ETF</div><div class="stock-code">SIL</div></td>
                         <td>227</td>
                         <td>$22.00</td>
-                        <td>$22.50</td>
-                        <td class="pnl-positive">+$113.50</td>
-                        <td class="pnl-positive">+2.27%</td>
+                        <td>$22.80</td>
+                        <td class="pnl-positive">+$181.60</td>
+                        <td class="pnl-positive">+3.64%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-hk">港股</span></td>
                         <td><div class="stock-name">腾讯</div><div class="stock-code">0700.HK</div></td>
                         <td>40</td>
                         <td>$513.50</td>
-                        <td>$508.00</td>
-                        <td class="pnl-negative">-$220.00</td>
-                        <td class="pnl-negative">-1.07%</td>
+                        <td>$502.50</td>
+                        <td class="pnl-negative">-$440.00</td>
+                        <td class="pnl-negative">-2.14%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-hk">港股</span></td>
                         <td><div class="stock-name">阿里</div><div class="stock-code">9988.HK</div></td>
                         <td>80</td>
                         <td>$135.10</td>
-                        <td>$133.50</td>
-                        <td class="pnl-negative">-$128.00</td>
-                        <td class="pnl-negative">-1.18%</td>
+                        <td>$129.10</td>
+                        <td class="pnl-negative">-$480.00</td>
+                        <td class="pnl-negative">-4.44%</td>
                     </tr>
-                    <tr>
+                    <tr style="background: rgba(244, 33, 46, 0.1);">
                         <td><span class="market-tag market-hk">港股</span></td>
-                        <td><div class="stock-name">零跑汽车</div><div class="stock-code">9863.HK</div></td>
+                        <td><div class="stock-name">零跑汽车 ⚠️ 已止损</div><div class="stock-code">9863.HK</div></td>
                         <td>100</td>
                         <td>$41.00</td>
-                        <td>$38.26</td>
-                        <td class="pnl-negative">-$274.00</td>
-                        <td class="pnl-negative">-6.68%</td>
+                        <td>$37.50</td>
+                        <td class="pnl-negative">-$350.00</td>
+                        <td class="pnl-negative">-8.54%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-jp">日股</span></td>
                         <td><div class="stock-name">丰田</div><div class="stock-code">7203.T</div></td>
                         <td>10</td>
                         <td>¥3,702</td>
-                        <td>¥3,650</td>
-                        <td class="pnl-negative">-¥520</td>
-                        <td class="pnl-negative">-1.40%</td>
+                        <td>¥3,507</td>
+                        <td class="pnl-negative">-¥1,950</td>
+                        <td class="pnl-negative">-5.27%</td>
                     </tr>
                     <tr>
                         <td><span class="market-tag market-jp">日股</span></td>
                         <td><div class="stock-name">三菱商事</div><div class="stock-code">8058.T</div></td>
                         <td>20</td>
                         <td>¥5,320</td>
-                        <td>¥5,300</td>
-                        <td class="pnl-negative">-¥400</td>
-                        <td class="pnl-negative">-0.38%</td>
+                        <td>¥5,280</td>
+                        <td class="pnl-negative">-¥800</td>
+                        <td class="pnl-negative">-0.75%</td>
                     </tr>
                 </tbody>
             </table>
@@ -223,25 +230,34 @@
                         <td>$4,994</td>
                         <td>白银避险 + 工业需求</td>
                     </tr>
+                    <tr style="background: rgba(244, 33, 46, 0.1);">
+                        <td>03-04 12:40</td>
+                        <td style="color: #f4212e; font-weight: 600;">卖出</td>
+                        <td>零跑汽车</td>
+                        <td>100 股</td>
+                        <td>$37.50</td>
+                        <td>$3,750</td>
+                        <td>触及 -8% 止损线，纪律执行</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="section">
             <h2>💡 策略建议</h2>
-            <div class="alert alert-danger">
-                <strong>止损纪律:</strong> 零跑汽车若触及 -8% (-$37.72)，立即卖出止损。
+            <div class="alert alert-success">
+                <strong>✅ 止损纪律执行:</strong> 零跑汽车 -8.54% 已止损，亏损 $350。纪律第一！
             </div>
             <div class="alert alert-warning">
-                <strong>仓位管理:</strong> 当前仓位 98%，现金仅 $1,921 (1.9%)，低于 30% 安全线。建议反弹减仓。
+                <strong>仓位管理:</strong> 止损后仓位约 94%，现金回升至约 5%。仍需反弹减仓至 80% 以下。
             </div>
             <div class="alert alert-info">
-                <strong>关注机会:</strong> NVDA 若回调至 $175 以下可考虑加仓；SIL 继续持有观察。
+                <strong>关注机会:</strong> 阿里 RSI=17.86 超卖，若站稳 MA20 可考虑加仓；SIL 继续持有。
             </div>
         </div>
 
         <div class="footer">
-            <p>最后更新：2026-03-04 09:30 北京时间</p>
+            <p>最后更新：2026-03-04 12:40 北京时间</p>
             <p>下次更新：2026-03-04 20:00 盘后总结</p>
             <p>GitHub: <a href="https://github.com/HILONG812/daily-trading-strategy" style="color: #1d9bf0;">HILONG812/daily-trading-strategy</a></p>
         </div>

@@ -16,9 +16,9 @@
 用户说"更新"时也执行上述流程
 
 ## 记录
-- lastMorningRun: 2026-03-04 00:00 ✅
-- lastEveningRun: 2026-03-03 20:00 ✅ (实际执行：20:33 北京时间)
-- nextMorningRun: 2026-03-04 08:00 ⏰
+- lastMorningRun: 2026-03-04 08:00 ✅ (实际执行：16:26 北京时间)
+- lastEveningRun: 2026-03-04 00:00 ✅
+- nextEveningRun: 2026-03-04 20:00
 
 ## ✅ Cron 已配置（2026-03-03 22:40）
 ```
