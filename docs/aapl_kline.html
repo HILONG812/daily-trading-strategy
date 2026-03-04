@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAPL K 线图</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f1419; color: #e7e9ea; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #1d9bf0 0%, #794bc4 100%); padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+        .header h1 { font-size: 24px; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .chart-container { background: #1e2732; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .kline-chart { display: flex; flex-direction: column; gap: 2px; }
+        .candle { display: flex; align-items: center; height: 60px; position: relative; }
+        .candle-info { width: 100px; font-size: 12px; color: #8b98a5; text-align: right; padding-right: 10px; }
+        .candle-chart { flex: 1; position: relative; height: 50px; }
+        .candle-volume { width: 80px; font-size: 11px; color: #8b98a5; text-align: left; padding-left: 10px; }
+        .wick { position: absolute; width: 2px; background: currentColor; }
+        .body { position: absolute; width: 8px; background: currentColor; border-radius: 2px; }
+        .date-label { position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; color: #8b98a5; }
+        .ma-line { position: absolute; height: 2px; background: #ffc107; width: 100%; }
+        .legend { display: flex; gap: 20px; justify-content: center; margin-top: 20px; font-size: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-color { width: 16px; height: 16px; border-radius: 3px; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+        .stat-card { background: #2f3943; padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-label { font-size: 12px; color: #8b98a5; margin-bottom: 5px; }
+        .stat-value { font-size: 20px; font-weight: bold; }
+        .stat-value.up { color: #00ba7c; }
+        .stat-value.down { color: #f4212e; }
+        .footer { text-align: center; color: #8b98a5; font-size: 12px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 AAPL K 线图 (近一周)</h1>
+            <p>数据来源：本地缓存 | 生成时间：2026-03-04 14:29</p>
+        </div>
+        
+        <div class="chart-container">
+            <div class="kline-chart">
+
+                <div class="candle">
+                    <div class="candle-info">
+                        <div>2026-02-25</div>
+                        <div style="color: #00ba7c; font-weight: bold;">$265.80</div>
+                    </div>
+                    <div class="candle-chart" style="color: #00ba7c;">
+                        <div class="wick" style="left: 50%; bottom: 23.383458646616624%; height: 37.59398496240598%; transform: translateX(-50%);"></div>
+                        <div class="body" style="left: 50%; bottom: 27.142857142857224%; height: 28.571428571428626%; transform: translateX(-50%);"></div>
+                        <div class="date-label">02-25</div>
+                    </div>
+                    <div class="candle-volume">
+                        Vol: 55.0M
+                    </div>
+                </div>
+
+                <div class="candle">
+                    <div class="candle-info">
+                        <div>2026-02-26</div>
+                        <div style="color: #00ba7c; font-weight: bold;">$267.20</div>
+                    </div>
+                    <div class="candle-chart" style="color: #00ba7c;">
+                        <div class="wick" style="left: 50%; bottom: 49.69924812030081%; height: 22.5563909774436%; transform: translateX(-50%);"></div>
+                        <div class="body" style="left: 50%; bottom: 57.218045112782015%; height: 9.022556390977336%; transform: translateX(-50%);"></div>
+                        <div class="date-label">02-26</div>
+                    </div>
+                    <div class="candle-volume">
+                        Vol: 48.0M
+                    </div>
+                </div>
+
+                <div class="candle">
+                    <div class="candle-info">
+                        <div>2026-02-27</div>
+                        <div style="color: #f4212e; font-weight: bold;">$264.72</div>
+                    </div>
+                    <div class="candle-chart" style="color: #f4212e;">
+                        <div class="wick" style="left: 50%; bottom: 42.180451127819616%; height: 37.593984962405976%; transform: translateX(-50%);"></div>
+                        <div class="body" style="left: 50%; bottom: 47.59398496240628%; height: 20.90225563909752%; transform: translateX(-50%);"></div>
+                        <div class="date-label">02-27</div>
+                    </div>
+                    <div class="candle-volume">
+                        Vol: 52.0M
+                    </div>
+                </div>
+
+                <div class="candle">
+                    <div class="candle-info">
+                        <div>2026-03-03</div>
+                        <div style="color: #f4212e; font-weight: bold;">$261.88</div>
+                    </div>
+                    <div class="candle-chart" style="color: #f4212e;">
+                        <div class="wick" style="left: 50%; bottom: 19.624060150376028%; height: 37.59398496240598%; transform: translateX(-50%);"></div>
+                        <div class="body" style="left: 50%; bottom: 26.240601503759443%; height: 19.699248120300773%; transform: translateX(-50%);"></div>
+                        <div class="date-label">03-03</div>
+                    </div>
+                    <div class="candle-volume">
+                        Vol: 62.0M
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #00ba7c;"></div>
+                    <span>上涨</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f4212e;"></div>
+                    <span>下跌</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffc107;"></div>
+                    <span>MA5</span>
+                </div>
+            </div>
+            
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-label">开盘价</div>
+                    <div class="stat-value">$262.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">收盘价</div>
+                    <div class="stat-value down">$261.88</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">涨跌</div>
+                    <div class="stat-value down">-3.92 (-1.47%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">最高价</div>
+                    <div class="stat-value">$269.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">最低价</div>
+                    <div class="stat-value">$261.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">平均成交量</div>
+                    <div class="stat-value">54.2M</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>数据来源：本地缓存 | GitHub: https://github.com/HILONG812/daily-trading-strategy</p>
+        </div>
+    </div>
+</body>
+</html>
