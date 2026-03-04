@@ -1,0 +1,390 @@
+{
+  "timestamp": "2026-03-04T14:25:03.680852",
+  "data_date": "2026-03-03",
+  "markets": {
+    "HK": {
+      "0700": {
+        "price": 510.5,
+        "change_pct": -0.68,
+        "high": 518.0,
+        "low": 508.0,
+        "open": 515.0,
+        "volume": 18500000,
+        "symbol": "0700",
+        "name": "腾讯控股",
+        "market": "HK",
+        "currency": "HKD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:03.680861",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "9988": {
+        "price": 134.8,
+        "change_pct": -1.17,
+        "high": 138.5,
+        "low": 133.0,
+        "open": 137.0,
+        "volume": 42000000,
+        "symbol": "9988",
+        "name": "阿里巴巴",
+        "market": "HK",
+        "currency": "HKD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:03.980983",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "9863": {
+        "price": 38.26,
+        "change_pct": -7.0,
+        "high": 41.5,
+        "low": 37.8,
+        "open": 41.0,
+        "volume": 8500000,
+        "symbol": "9863",
+        "name": "零跑汽车",
+        "market": "HK",
+        "currency": "HKD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:04.281122",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "2402": {
+        "price": 31.5,
+        "change_pct": -2.8,
+        "high": 33.0,
+        "low": 31.0,
+        "open": 32.5,
+        "volume": 95000,
+        "symbol": "2402",
+        "name": "亿华通",
+        "market": "HK",
+        "currency": "HKD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:04.581271"
+      }
+    },
+    "US": {
+      "NVDA": {
+        "price": 180.07,
+        "change_pct": -1.32,
+        "high": 183.5,
+        "low": 179.5,
+        "open": 182.0,
+        "volume": 52000000,
+        "symbol": "NVDA",
+        "name": "英伟达",
+        "market": "US",
+        "currency": "USD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:04.881430",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "AAPL": {
+        "price": 261.88,
+        "change_pct": -1.07,
+        "high": 266.0,
+        "low": 261.0,
+        "open": 264.5,
+        "volume": 62000000,
+        "symbol": "AAPL",
+        "name": "苹果",
+        "market": "US",
+        "currency": "USD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:05.181579"
+      },
+      "TSLA": {
+        "price": 392.35,
+        "change_pct": -2.72,
+        "high": 405.0,
+        "low": 390.0,
+        "open": 402.0,
+        "volume": 105000000,
+        "symbol": "TSLA",
+        "name": "特斯拉",
+        "market": "US",
+        "currency": "USD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:05.481715",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "ASML": {
+        "price": 945.0,
+        "change_pct": -0.53,
+        "high": 958.0,
+        "low": 940.0,
+        "open": 952.0,
+        "volume": 1200000,
+        "symbol": "ASML",
+        "name": "ASML",
+        "market": "US",
+        "currency": "USD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:05.781863"
+      },
+      "SIL": {
+        "price": 22.5,
+        "change_pct": 2.27,
+        "high": 22.8,
+        "low": 22.0,
+        "open": 22.0,
+        "volume": 850000,
+        "symbol": "SIL",
+        "name": "白银 ETF",
+        "market": "US",
+        "currency": "USD",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:06.081999"
+      }
+    },
+    "JP": {
+      "7203.T": {
+        "price": 3650,
+        "change_pct": -6.14,
+        "high": 3850,
+        "low": 3620,
+        "open": 3800,
+        "volume": 12500000,
+        "symbol": "7203.T",
+        "name": "丰田汽车",
+        "market": "JP",
+        "currency": "JPY",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:06.382132",
+        "rsi": 50,
+        "ma20": null,
+        "ma5": null
+      },
+      "8058.T": {
+        "price": 5300,
+        "change_pct": -0.17,
+        "high": 5350,
+        "low": 5280,
+        "open": 5320,
+        "volume": 3200000,
+        "symbol": "8058.T",
+        "name": "三菱商事",
+        "market": "JP",
+        "currency": "JPY",
+        "data_date": "2026-03-03",
+        "timestamp": "2026-03-04T14:25:06.682274"
+      }
+    }
+  },
+  "klines": {
+    "HK_0700": [
+      {
+        "date": "2026-02-25",
+        "open": 508.0,
+        "high": 520.0,
+        "low": 506.0,
+        "close": 518.5,
+        "volume": 18000000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 519.0,
+        "high": 525.0,
+        "low": 515.0,
+        "close": 520.0,
+        "volume": 16000000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 520.5,
+        "high": 522.0,
+        "low": 512.0,
+        "close": 513.5,
+        "volume": 20000000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 515.0,
+        "high": 518.0,
+        "low": 508.0,
+        "close": 510.5,
+        "volume": 18500000
+      }
+    ],
+    "HK_9988": [
+      {
+        "date": "2026-02-25",
+        "open": 132.0,
+        "high": 138.5,
+        "low": 131.5,
+        "close": 137.2,
+        "volume": 45000000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 137.5,
+        "high": 140.0,
+        "low": 136.0,
+        "close": 138.5,
+        "volume": 42000000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 138.8,
+        "high": 140.0,
+        "low": 134.0,
+        "close": 135.1,
+        "volume": 50000000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 137.0,
+        "high": 138.5,
+        "low": 133.0,
+        "close": 134.8,
+        "volume": 42000000
+      }
+    ],
+    "HK_9863": [
+      {
+        "date": "2026-02-25",
+        "open": 42.0,
+        "high": 44.5,
+        "low": 41.5,
+        "close": 43.8,
+        "volume": 9500000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 44.0,
+        "high": 45.5,
+        "low": 43.0,
+        "close": 44.5,
+        "volume": 8800000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 44.8,
+        "high": 46.0,
+        "low": 43.5,
+        "close": 44.0,
+        "volume": 10200000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 41.0,
+        "high": 41.5,
+        "low": 37.8,
+        "close": 38.26,
+        "volume": 8500000
+      }
+    ],
+    "US_NVDA": [
+      {
+        "date": "2026-02-25",
+        "open": 178.5,
+        "high": 182.3,
+        "low": 177.8,
+        "close": 181.2,
+        "volume": 45000000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 181.5,
+        "high": 184.0,
+        "low": 180.5,
+        "close": 183.5,
+        "volume": 42000000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 183.8,
+        "high": 185.2,
+        "low": 182.0,
+        "close": 182.48,
+        "volume": 38000000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 182.0,
+        "high": 183.5,
+        "low": 179.5,
+        "close": 180.07,
+        "volume": 52000000
+      }
+    ],
+    "US_TSLA": [
+      {
+        "date": "2026-02-25",
+        "open": 398.0,
+        "high": 408.5,
+        "low": 396.0,
+        "close": 405.2,
+        "volume": 85000000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 406.0,
+        "high": 412.0,
+        "low": 404.0,
+        "close": 410.5,
+        "volume": 78000000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 411.0,
+        "high": 415.0,
+        "low": 402.0,
+        "close": 403.32,
+        "volume": 92000000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 402.0,
+        "high": 405.0,
+        "low": 390.0,
+        "close": 392.35,
+        "volume": 105000000
+      }
+    ],
+    "JP_7203.T": [
+      {
+        "date": "2026-02-25",
+        "open": 3750,
+        "high": 3850,
+        "low": 3720,
+        "close": 3820,
+        "volume": 11000000
+      },
+      {
+        "date": "2026-02-26",
+        "open": 3830,
+        "high": 3900,
+        "low": 3800,
+        "close": 3880,
+        "volume": 10500000
+      },
+      {
+        "date": "2026-02-27",
+        "open": 3890,
+        "high": 3920,
+        "low": 3850,
+        "close": 3870,
+        "volume": 12000000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 3800,
+        "high": 3850,
+        "low": 3620,
+        "close": 3650,
+        "volume": 12500000
+      }
+    ]
+  }
+}
