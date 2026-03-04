@@ -21,16 +21,15 @@
         .up { background: #d4edda; color: #155724; }
         .down { background: #f8d7da; color: #721c24; }
         .alert { padding: 15px; border-radius: 5px; margin: 10px 0; font-size: 14px; }
-        .alert-warning { background: #fff3cd; color: #856404; border-left: 4px solid #ffc107; }
         .alert-danger { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
+        .alert-warning { background: #fff3cd; color: #856404; border-left: 4px solid #ffc107; }
         .alert-info { background: #d1ecf1; color: #0c5460; border-left: 4px solid #17a2b8; }
         .section { margin: 20px 0; }
-        .section h4 { color: #555; margin-bottom: 10px; }
+        .plan { background: #e7f3ff; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .plan-title { font-weight: bold; color: #0066cc; }
         ul { padding-left: 20px; }
         li { margin: 8px 0; color: #444; }
         .footer { text-align: center; margin-top: 30px; color: #666; font-size: 12px; }
-        .plan { background: #e7f3ff; padding: 15px; border-radius: 8px; margin: 10px 0; }
-        .plan-title { font-weight: bold; color: #0066cc; }
     </style>
 </head>
 <body>
@@ -40,8 +39,8 @@
         <div>市场策略师自动更新 | 达利奥系统逻辑 + 芒格多元思维 + K 线技术分析</div>
     </div>
 
-    <!-- 隔夜美股 -->
-    <div class="section">
+    <div class="grid">
+        <!-- 美股 -->
         <div class="card">
             <h3>🌙 隔夜美股收盘</h3>
             <div class="stock">
@@ -75,15 +74,13 @@
                 </div>
             </div>
             <div class="alert alert-info">
-                <strong>美股整体回调：</strong>科技股普遍下跌，NVDA 昨日强势后今日获利回吐。
+                <strong>美股整体回调：</strong>科技股普遍下跌，NVDA 昨日强势后获利回吐。
             </div>
         </div>
-    </div>
 
-    <!-- 港股/日股 -->
-    <div class="section">
+        <!-- 港股 -->
         <div class="card">
-            <h3>🇭🇰🇯🇵 港股/日股 (昨日收盘)</h3>
+            <h3>🇭🇰 港股 (昨日收盘)</h3>
             <div class="stock">
                 <div>
                     <div class="stock-name">腾讯</div>
@@ -112,6 +109,21 @@
                 <div style="text-align: right;">
                     <div class="stock-price">$38.26</div>
                     <span class="stock-change down">-7.00%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日股 -->
+        <div class="card">
+            <h3>🇯🇵 日股 (昨日收盘)</h3>
+            <div class="stock">
+                <div>
+                    <div class="stock-name">三菱商事</div>
+                    <div class="stock-code">8058.T</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stock-price">¥5315</div>
+                    <span class="stock-change down">-0.17%</span>
                 </div>
             </div>
             <div class="stock">
@@ -144,7 +156,7 @@
             <div class="alert alert-info">
                 <strong>🔵 英伟达 (NVDA) - 回调买入机会？</strong><br>
                 隔夜回调 -1.32%，但整体趋势仍向上。<br>
-                <strong>今日策略：</strong>若港股/美股继续回调，可考虑逢低加仓。
+                <strong>今日策略：</strong>若继续回调至 $175 以下，可考虑加仓 5-10% 仓位。
             </div>
         </div>
     </div>
@@ -194,22 +206,10 @@
         </div>
     </div>
 
-    <!-- 宏观监测 -->
-    <div class="section">
-        <div class="card">
-            <h3>🌍 宏观"机器"监测 (Dalio Style)</h3>
-            <ul>
-                <li><strong>流动性：</strong>美股科技股回调，资金可能轮动至价值股</li>
-                <li><strong>风险情绪：</strong>昨日多股大跌，市场风险偏好下降</li>
-                <li><strong>系统性风险：</strong>无明显宏观风险事件，个股基本面为主</li>
-            </ul>
-        </div>
-    </div>
-
     <div class="footer">
-        <p>最后更新：2026-03-04 01:26 UTC (09:26 北京时间)</p>
+        <p>最后更新：2026-03-04 08:26 UTC (16:26 北京时间)</p>
         <p>市场策略师自动更新系统 | 下次更新：2026-03-04 20:00 盘后</p>
-        <p><em>"众人的地方不一定有金子，但一定有践踏" —— 芒格</em></p>
+        <p><em>"纪律第一，不要抱有幻想"</em></p>
     </div>
 </body>
 </html>
