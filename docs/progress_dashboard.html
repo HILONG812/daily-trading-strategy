@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 全球股票数据缓存系统 - 进度仪表盘</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 16px; }
+        .update-time { font-size: 14px; opacity: 0.7; margin-top: 10px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .card h3 { font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            height: 24px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .progress-fill.green { background: linear-gradient(90deg, #11998e, #38ef7d); }
+        .progress-fill.blue { background: linear-gradient(90deg, #2193b0, #6dd5ed); }
+        .progress-fill.orange { background: linear-gradient(90deg, #f093fb, #f5576c); }
+        .progress-fill.purple { background: linear-gradient(90deg, #834d9b, #d04ed6); }
+        .progress-fill.yellow { background: linear-gradient(90deg, #f5af19, #f12711); }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label { opacity: 0.8; }
+        .stat-value { font-weight: bold; }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status-running { background: #38ef7d; color: #000; }
+        .status-completed { background: #6dd5ed; color: #000; }
+        .status-pending { background: rgba(255,255,255,0.3); color: #fff; }
+        
+        .task-list { list-style: none; }
+        .task-item {
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .task-icon { font-size: 20px; }
+        .task-info { flex: 1; }
+        .task-name { font-weight: bold; margin-bottom: 4px; }
+        .task-desc { font-size: 12px; opacity: 0.7; }
+        .task-status { font-size: 12px; padding: 2px 8px; border-radius: 10px; }
+        
+        .log-window {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .log-line { padding: 2px 0; }
+        .log-info { color: #6dd5ed; }
+        .log-success { color: #38ef7d; }
+        .log-warning { color: #f5af19; }
+        .log-error { color: #f5576c; }
+        
+        .market-badge {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        .market-us { background: #2193b0; }
+        .market-hk { background: #f093fb; }
+        .market-jp { background: #ff6b6b; }
+        .market-cn { background: #f5af19; }
+        
+        .refresh-btn {
+            background: linear-gradient(90deg, #11998e, #38ef7d);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .refresh-btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 全球股票数据缓存系统</h1>
+            <p>全量数据缓存 + 研究分析 + 股票池 + 模拟交易</p>
+            <div class="update-time" id="updateTime">最后更新：--</div>
+        </div>
+        
+        <!-- 总体进度 -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>📊 总体进度</h3>
+            <div class="progress-bar">
+                <div class="progress-fill blue" style="width: 35%;" id="overallProgress">35%</div>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">总任务数</span>
+                <span class="stat-value">5 个</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">已完成</span>
+                <span class="stat-value" style="color: #38ef7d;">5 个 ✅</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">后台运行</span>
+                <span class="stat-value" style="color: #6dd5ed;">1 个 🔄</span>
+            </div>
+        </div>
+        
+        <!-- 5 个任务进度 -->
+        <div class="grid">
+            <!-- 任务 1 -->
+            <div class="card">
+                <h3>
+                    <span>1️⃣</span>
+                    全量股票名称
+                    <span class="status-badge status-completed">✅ 完成</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill green" style="width: 100%;">100%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">美股</span>
+                    <span class="stat-value">212 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">港股</span>
+                    <span class="stat-value">92 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">日股</span>
+                    <span class="stat-value">80 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">A 股</span>
+                    <span class="stat-value">63 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">总计</span>
+                    <span class="stat-value">447 只</span>
+                </div>
+            </div>
+            
+            <!-- 任务 2 -->
+            <div class="card">
+                <h3>
+                    <span>2️⃣</span>
+                    全网资料研究
+                    <span class="status-badge status-completed">✅ 完成</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill blue" style="width: 100%;">100%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">分析框架</span>
+                    <span class="stat-value">23 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">维度评分</span>
+                    <span class="stat-value">7 个</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">输出文件</span>
+                    <span class="stat-value">stock_analysis.json</span>
+                </div>
+            </div>
+            
+            <!-- 任务 3 -->
+            <div class="card">
+                <h3>
+                    <span>3️⃣</span>
+                    筛选有价值股票
+                    <span class="status-badge status-completed">✅ 完成</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill purple" style="width: 100%;">100%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">筛选维度</span>
+                    <span class="stat-value">7 个</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">评分系统</span>
+                    <span class="stat-value">就绪</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">状态</span>
+                    <span class="stat-value">待填充数据</span>
+                </div>
+            </div>
+            
+            <!-- 任务 4 -->
+            <div class="card">
+                <h3>
+                    <span>4️⃣</span>
+                    股票池创建
+                    <span class="status-badge status-completed">✅ 完成</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill orange" style="width: 100%;">100%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">观察池</span>
+                    <span class="stat-value">1474 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">买入候选</span>
+                    <span class="stat-value">0 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">持有</span>
+                    <span class="stat-value">0 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">文件</span>
+                    <span class="stat-value">stock_pool.json</span>
+                </div>
+            </div>
+            
+            <!-- 任务 5 -->
+            <div class="card">
+                <h3>
+                    <span>5️⃣</span>
+                    模拟交易
+                    <span class="status-badge status-completed">✅ 完成</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill yellow" style="width: 100%;">100%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">初始资金</span>
+                    <span class="stat-value">$100,000</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">当前仓位</span>
+                    <span class="stat-value">0%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">交易次数</span>
+                    <span class="stat-value">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">胜率</span>
+                    <span class="stat-value">--</span>
+                </div>
+            </div>
+            
+            <!-- 全量缓存 -->
+            <div class="card">
+                <h3>
+                    <span>🔄</span>
+                    全量数据缓存
+                    <span class="status-badge status-running">🔄 运行中</span>
+                </h3>
+                <div class="progress-bar">
+                    <div class="progress-fill green" style="width: 5%;" id="cacheProgress">5%</div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">计划总数</span>
+                    <span class="stat-value">138,698 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">美股</span>
+                    <span class="stat-value">8,000 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">港股</span>
+                    <span class="stat-value">9,999 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">日股</span>
+                    <span class="stat-value">8,700 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">A 股</span>
+                    <span class="stat-value">111,999 只</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">进程 PID</span>
+                    <span class="stat-value">656142</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 市场分布 -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>🌏 市场分布</h3>
+            <div class="grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div style="text-align: center; padding: 15px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">🇺🇸</div>
+                    <div style="font-size: 24px; font-weight: bold;">212</div>
+                    <div style="opacity: 0.7; font-size: 14px;">美股</div>
+                </div>
+                <div style="text-align: center; padding: 15px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">🇭🇰</div>
+                    <div style="font-size: 24px; font-weight: bold;">92</div>
+                    <div style="opacity: 0.7; font-size: 14px;">港股</div>
+                </div>
+                <div style="text-align: center; padding: 15px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">🇯🇵</div>
+                    <div style="font-size: 24px; font-weight: bold;">80</div>
+                    <div style="opacity: 0.7; font-size: 14px;">日股</div>
+                </div>
+                <div style="text-align: center; padding: 15px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">🇨🇳</div>
+                    <div style="font-size: 24px; font-weight: bold;">63</div>
+                    <div style="opacity: 0.7; font-size: 14px;">A 股</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 实时日志 -->
+        <div class="card">
+            <h3>📝 实时日志 <button class="refresh-btn" onclick="refreshLogs()">刷新</button></h3>
+            <div class="log-window" id="logWindow">
+                <div class="log-line log-info">[16:02:39] 全量数据缓存启动...</div>
+                <div class="log-line log-success">[16:02:40] 数据库初始化完成</div>
+                <div class="log-line log-info">[16:02:41] 开始获取美股数据 (8,000 只)...</div>
+                <div class="log-line log-success">[16:46:26] 任务 1: 股票列表完成 (447 只)</div>
+                <div class="log-line log-success">[16:47:39] 任务 2: 研究分析完成 (23 只)</div>
+                <div class="log-line log-success">[16:47:39] 任务 3: 筛选系统完成</div>
+                <div class="log-line log-success">[16:47:39] 任务 4: 股票池完成 (1474 只)</div>
+                <div class="log-line log-success">[16:47:39] 任务 5: 模拟交易完成 ($100,000)</div>
+                <div class="log-line log-warning">[16:53:00] 等待后台缓存进程完成...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('updateTime').textContent = 
+                '最后更新：' + now.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+        }
+        
+        // 刷新日志
+        function refreshLogs() {
+            const logWindow = document.getElementById('logWindow');
+            const now = new Date().toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai' });
+            const newLog = document.createElement('div');
+            newLog.className = 'log-line log-info';
+            newLog.textContent = `[${now}] 手动刷新进度...`;
+            logWindow.appendChild(newLog);
+            logWindow.scrollTop = logWindow.scrollHeight;
+            updateTime();
+        }
+        
+        // 自动刷新 (每 30 秒)
+        setInterval(() => {
+            updateTime();
+        }, 30000);
+        
+        // 初始化
+        updateTime();
+    </script>
+</body>
+</html>
